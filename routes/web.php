@@ -18,8 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create', [AdminNewsController::class, 'add'])->middleware('auth');
+Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], function() {
+    Route::get('news/create', [AdminNewsController::class, 'add'])
+        ->name('news.create');
+    Route::post('news/create',[AdminNewsController::class, 'create'])
+        ->name('news.store');
 });
 
 Auth::routes();
