@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('news.create');
     Route::post('news/create',[AdminNewsController::class, 'create'])
         ->name('news.store');
+    Route::get('news',[AdminNewsController::class, 'index'])
+        ->name('news.index');
+    Route::get('news/{news}/edit',[AdminNewsController::class, 'edit'])
+        ->name('news.edit');
+    Route::post('news/{news}/edit',[AdminNewsController::class, 'update'])
+        ->name('news.update');
+
+    // Review
+    Route::get('review/create', [AdminReviewController::class, 'add'])
+        ->name('review.create');
+    Route::post('review/create', [AdminReviewController::class, 'store'])
+        ->name('review.store');
+
 });
 
 Auth::routes();
