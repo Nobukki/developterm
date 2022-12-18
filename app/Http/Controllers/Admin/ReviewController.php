@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Review\CreateRequest as ReviewCreateRequest;
 
 class ReviewController extends Controller
 {
@@ -15,6 +16,7 @@ class ReviewController extends Controller
 
     public function store(ReviewCreateRequest $request)
     {
+        dd(__METHOD__);
         $news = new Review;
         $form = $request->all();
 
