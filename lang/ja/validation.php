@@ -170,7 +170,8 @@ return [
 
     'attributes' => [
         'title' => 'タイトル',
-        'body' => '本文'
+        'score' => '評価',
+        'content' => '感想',
     ],
 
 ];

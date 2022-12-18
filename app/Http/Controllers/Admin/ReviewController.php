@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Review\CreateRequest as ReviewCreateRequest;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -16,8 +18,8 @@ class ReviewController extends Controller
 
     public function store(ReviewCreateRequest $request)
     {
-        dd(__METHOD__);
-        $news = new Review;
+        // dd(__METHOD__);
+        $review = new Review;
         $form = $request->all();
 
          // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
@@ -35,6 +37,7 @@ class ReviewController extends Controller
 
         // データベースに保存する
         $review->fill($form);
+        $review->user_id = Auth::id();
         $review->save();
 
         return redirect(route('admin.review.create'));
