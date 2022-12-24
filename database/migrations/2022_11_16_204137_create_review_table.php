@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image_path')->nullable()->comment('表紙の画像パス');
             $table->unsignedTinyInteger('score')->comment('得点');
             $table->string('content', 10000)->comment('感想本文');
+            $table->boolean('is_favorite')->default(false)->comment('trueの場合はお気に入り');
             $table->timestamps();
         });
     }

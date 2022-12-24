@@ -40,9 +40,21 @@ class ReviewController extends Controller
         $review->user_id = Auth::id();
         $review->save();
 
-        return redirect(route('admin.review.create'));
+        return redirect(route('admin.review.index'));
 
     }
+
+    public function index(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            $posts = Review::where('title', $cond_title)->get();
+        } else {
+            $posts = Review::all();
+        }
+        return view('admin.review.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+
 
 
 }

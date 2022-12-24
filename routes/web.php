@@ -36,6 +36,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('review.create');
     Route::post('review/create', [AdminReviewController::class, 'store'])
         ->name('review.store');
+    Route::get('review',[AdminReviewController::class, 'index'])
+        ->name('review.index');
 
 });
 
