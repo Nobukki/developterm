@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Review\CreateRequest as ReviewCreateRequest;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReviewUpdateRequest;
 
 class ReviewController extends Controller
 {
@@ -53,6 +54,22 @@ class ReviewController extends Controller
             $posts = Review::all();
         }
         return view('admin.review.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+
+
+    public function edit(Request $request, $review)
+    {
+        $review_info = Review::find($review);
+        if (empty($review_info)) {
+            abort(404);
+        }
+        return view('admin.review.edit', ['review' => $review_info]);
+    }
+
+
+    public function update(ReviewUpdateRequest $request)
+    {
+
     }
 
 

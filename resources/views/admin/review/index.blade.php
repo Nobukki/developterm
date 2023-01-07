@@ -31,10 +31,11 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th width="10%">番号</th>
-                                <th width="30%">タイトル</th>
+                                <th width="5%">番号</th>
+                                <th width="25%">タイトル</th>
                                 <th width="40%">感想</th>
-                                <th width="20%">お気に入り</th>
+                                <th width="15%">編集</th>
+                                <th width="15%">お気に入り</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +44,15 @@
                                     <th>{{ $review->id }}</th>
                                     <td>{{ Str::limit($review->title, 100) }}</td>
                                     <td>{{ Str::limit($review->content, 250) }}</td>
+                                    {{-- 編集を追加 --}}
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('admin.review.edit', ['review' => $review]) }}">編集</a>
+                                        </div>
+                                    </td>
+                                    {{-- お気に入りのボタン追加 --}}
+                                    <td><button id="button" type="//">お気に入り登録</ / />
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

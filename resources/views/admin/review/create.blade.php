@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>新規投稿</h2>
-                {{ Form::open(['route' => 'admin.review.store', 'file' => true]) }}
+                {{ Form::open(['route' => 'admin.review.store', 'files' => true]) }}
 
                 @if (count($errors) > 0)
                     <ul>
@@ -54,7 +54,7 @@
                 <div class="form-group row">
                     <label class="col-md-2" for="content">感想</label>
                     <div class="col-md-10">
-                        <textarea class="form-control" name="content" id="content" rows="５">{{ old('body') }}</textarea>
+                        <textarea class="form-control" name="content" id="content" rows="5">{{ old('body') }}</textarea>
                     </div>
                 </div>
                 {{ csrf_field() }}

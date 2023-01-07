@@ -38,6 +38,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('review.store');
     Route::get('review',[AdminReviewController::class, 'index'])
         ->name('review.index');
+    Route::get('review/{review}/edit',[AdminReviewController::class, 'edit'])
+        ->name('review.edit');
+    Route::post('review/{review}/edit',[AdminReviewController::class, 'update'])
+        ->name('review.update');
+
 
 });
 
