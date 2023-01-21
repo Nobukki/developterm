@@ -14,5 +14,6 @@ class Review extends Model
         'publisher',
         'image_path',
         'content',
+        'is_favorite',
     ];
 }

@@ -47,11 +47,20 @@
                                     {{-- 編集を追加 --}}
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.review.edit', ['review' => $review]) }}">編集</a>
+                                            <a href="{{ route('admin.review.edit', ['review' => $review]) }}"
+                                                style="text-decoration:none;">編集</a>
                                         </div>
                                     </td>
                                     {{-- お気に入りのボタン追加 --}}
-                                    <td><button id="button" type="//">お気に入り登録</ / />
+                                    <td>
+                                        <a href="{{ route('admin.review.favorite', ['review' => $review]) }}">
+                                            {{-- @if ($review->is_favorite == 0) --}}
+                                            @if ($review->is_favorite)
+                                                <button type="button" class="btn btn-primary btn-sm">解除</button>
+                                            @else
+                                                <button type="button" class="btn btn-primary btn-sm">登録</button>
+                                            @endif
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('review.edit');
     Route::post('review/{review}/edit',[AdminReviewController::class, 'update'])
         ->name('review.update');
+    Route::get('review/{review}/favorite',[AdminReviewController::class, 'favorite'])
+        ->name('review.favorite');
 
 
 });

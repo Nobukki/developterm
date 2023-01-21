@@ -25,7 +25,14 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'body' => 'required',
+            'score' => 'required',
+            'publisher' => 'required',
+            'content' => [
+                'required',
+                'string',
+                'max:100',
+                'min:2',
+            ]
         ];
     }
 }

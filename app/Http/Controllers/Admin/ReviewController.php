@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Review\CreateRequest as ReviewCreateRequest;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ReviewUpdateRequest;
+use App\Http\Requests\Review\UpdateRequest as ReviewUpdateRequest;
 
 class ReviewController extends Controller
 {
@@ -69,9 +69,34 @@ class ReviewController extends Controller
 
     public function update(ReviewUpdateRequest $request)
     {
+        $review = Review::find($request->id);
+        $review_form = $request->all();
+        if ($request->remove == 'true') {
+            $review_form['image_path'] = null;
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $review_form['image_path'] = basename($path);
+        } else {
+            $review_form['image_path'] = $review->image_path;
+        }
 
+        unset($review_form['image']);
+        unset($review_form['remove']);
+        unset($review_form['_token']);
+
+        $review->fill($review_form)->save();
+
+        return redirect('admin/review');
     }
 
+
+    public function favorite($review)
+    {
+        // dd($review);
+        $is_favorite = Review::find($review)->is_favorite;
+        Review::find($review)->fill(['is_favorite' => !$is_favorite])->save();
+        return redirect('admin/review');
+    }
 
 
 }

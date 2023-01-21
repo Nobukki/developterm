@@ -60,9 +60,9 @@
 
                     {{-- 感想を編集 --}}
                     <div class="form-group row">
-                        <label class="col-md-2" for="publisher">感想</label>
+                        <label class="col-md-2" for="content">感想</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="contact" id="contact" rows="5">{{ $review->body }}</textarea>
+                            <textarea class="form-control" name="content" id="content" rows="5">{{ $review->content }}</textarea>
                         </div>
                     </div>
 
