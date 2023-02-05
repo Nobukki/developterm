@@ -43,7 +43,8 @@
                                 <tr>
                                     <th>{{ $review->id }}</th>
                                     <td>{{ Str::limit($review->title, 100) }}</td>
-                                    <td>{{ Str::limit($review->content, 250) }}</td>
+                                    {{-- <td>{{ Str::limit($review->content, 250) }}</td> --}}
+                                    <td>{!! nl2br(e($review->content)) !!}</td>
                                     {{-- 編集を追加 --}}
                                     <td>
                                         <div>

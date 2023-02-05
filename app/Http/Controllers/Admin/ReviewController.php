@@ -99,4 +99,24 @@ class ReviewController extends Controller
     }
 
 
+    public function favoriteIndex(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        $posts = Review::where('is_favorite', '=', 1)->get();
+        return view('admin.review.favorites', ['posts' => $posts, 'cond_title' => $cond_title]);
+
+    }
+
+
+    public function detail(Request $request, $review)
+    {
+        $review_info = Review::find($review);
+        if (empty($review_info)) {
+            abort(404);
+        }
+        return view('admin.review.detail', ['review' => $review_info]);
+    }
+
+
+
 }

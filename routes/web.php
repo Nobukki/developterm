@@ -38,12 +38,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('review.store');
     Route::get('review',[AdminReviewController::class, 'index'])
         ->name('review.index');
+    Route::get('review/favorite',[AdminReviewController::class, 'favoriteIndex'])
+        ->name('review.favoriteIndex');
     Route::get('review/{review}/edit',[AdminReviewController::class, 'edit'])
         ->name('review.edit');
     Route::post('review/{review}/edit',[AdminReviewController::class, 'update'])
         ->name('review.update');
     Route::get('review/{review}/favorite',[AdminReviewController::class, 'favorite'])
         ->name('review.favorite');
+    Route::get('review/{review}',[AdminReviewController::class, 'detail'])
+        ->name('review.detail');
 
 
 });
