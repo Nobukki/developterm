@@ -45,31 +45,33 @@
                         <label class="col-md-2" for="image">表紙</label>
                         <div class="col-md-10">
                             @if ($review->image_path)
-                                <img class="form-text text-info" src="{{ asset('storage/image/', $review->image_path) }}">
+                                <img class="mw-100" src="{{ asset('storage/image/' . $review->image_path) }}">
                             @endif
                         </div>
-                        <div class="form-check">
+                        {{-- <div class="form-check">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" name="remove" value="true">画像を削除
                             </label>
-                        </div>
+                        </div> --}}
                     </div>
 
                     {{-- 感想を編集 --}}
                     <div class="form-group row">
                         <label class="col-md-2" for="content">感想</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="content" id="content" rows="5">{{ $review->content }}</textarea>
+                            {!! nl2br(e($review->content)) !!}
                         </div>
                     </div>
-
+                    {{-- <div class="text-right"> --}}
                     <div class="form-group row">
-                        <div class="form-group col-4 text-right">
+                        <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $review->id }}">
                             {{ csrf_field() }}
-                            <input type="submit" class="btn btn-primary" value="更新">
+                            <a class="btn btn-primary" href="{{ route('admin.review.edit', ['review' => $review]) }}"
+                                style="text-decoration:none;">編集</a>
                         </div>
                     </div>
+                    {{-- </div> --}}
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $review->id }}">

@@ -7,9 +7,14 @@
             <h2>投稿のレビュー一覧</h2>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-6">
                 <a href="{{ route('admin.review.create') }}" role="button" class="btn btn-primary">新規投稿</a>
             </div>
+            <div class="col-6 text-right">
+                <a href="{{ route('admin.review.favoriteIndex') }}" role="button" class="btn btn-primary">お気に入り一覧</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-8">
                 <form action="{{ route('admin.review.index') }}" method="get">
                     <div class="form-group row">
@@ -31,24 +36,26 @@
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th width="5%">番号</th>
-                                <th width="25%">タイトル</th>
-                                <th width="40%">感想</th>
-                                <th width="15%">編集</th>
-                                <th width="15%">お気に入り</th>
+                                <th>番号</th>
+                                <th width="20%">タイトル</th>
+                                <th width="30%">感想</th>
+                                <th>編集</th>
+                                <th>お気に入り</th>
+                                <th>削除</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($posts as $review)
                                 <tr>
                                     <th>{{ $review->id }}</th>
-                                    <td>{{ Str::limit($review->title, 100) }}</td>
-                                    {{-- <td>{{ Str::limit($review->content, 250) }}</td> --}}
-                                    <td>{!! nl2br(e($review->content)) !!}</td>
+                                    <td>{{ Str::limit($review->title, 20) }}</td>
+                                    <td>{{ Str::limit($review->content, 20) }}</td>
+                                    {{-- <td>{!! nl2br(e($review->content)) !!}</td> --}}
                                     {{-- 編集を追加 --}}
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.review.edit', ['review' => $review]) }}"
+                                            <a class="btn btn-primary btn-sm"
+                                                href="{{ route('admin.review.edit', ['review' => $review]) }}"
                                                 style="text-decoration:none;">編集</a>
                                         </div>
                                     </td>
@@ -62,6 +69,11 @@
                                                 <button type="button" class="btn btn-primary btn-sm">登録</button>
                                             @endif
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="javascript:void(0);"
+                                            onclick="var ok=confirm('本当に削除しますか');
+                                        if (ok) location.href='{{ route('admin.review.delete', ['review' => $review]) }}'; return false;">削除</a>
                                     </td>
                                 </tr>
                             @endforeach

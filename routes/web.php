@@ -48,6 +48,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'auth'], fun
         ->name('review.favorite');
     Route::get('review/{review}',[AdminReviewController::class, 'detail'])
         ->name('review.detail');
+    Route::get('review/{review}/delete',[AdminReviewController::class, 'delete'])
+        ->name('review.delete');
+
 
 
 });

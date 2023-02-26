@@ -15,6 +15,7 @@ class ReviewController extends Controller
     public function add()
     {
         return view('admin.review.create');
+
     }
 
     public function store(ReviewCreateRequest $request)
@@ -115,6 +116,17 @@ class ReviewController extends Controller
             abort(404);
         }
         return view('admin.review.detail', ['review' => $review_info]);
+    }
+
+
+    public function delete(Request $request, $review)
+    {
+        $review_info = Review::find($review);
+        if (empty($review_info)) {
+            abort(404);
+        }
+        $review_info->delete();
+        return redirect(route('admin.review.index'));
     }
 
 
