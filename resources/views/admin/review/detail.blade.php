@@ -17,32 +17,32 @@
                     @endif
 
                     {{-- タイトルを編集 --}}
-                    <div class="form-group row">
-                        <label class="col-md-2" for="title">タイトル</label>
+                    <div class="form-group">
+                        <label class="text-nowrap col-md-2" for="title">タイトル</label>
                         <div class="col-md-10">
                             {{ $review->title }}
                         </div>
                     </div>
 
                     {{-- 評価を編集 --}}
-                    <div class="form-group row">
-                        <label class="col-md-2" for="score">評価（10点満点中）</label>
+                    <div class="form-group">
+                        <label class="text-nowrap col-xs-2" for="score">評価（10点満点中）</label>
                         <div class="col-md-10">
                             {{ $review->score }}
                         </div>
                     </div>
 
                     {{-- 出版会社を編集 --}}
-                    <div class="form-group row">
-                        <label class="col-md-2" for="publisher">出版会社</label>
+                    <div class="form-group">
+                        <label class="text-nowrap col-md-2" for="publisher">出版会社</label>
                         <div class="col-md-10">
                             {{ $review->publisher }}
                         </div>
                     </div>
 
                     {{-- 表紙を編集 --}}
-                    <div class="form-group row">
-                        <label class="col-md-2" for="image">表紙</label>
+                    <div class="form-group">
+                        <label class="text-nowrap col-md-2" for="image">表紙</label>
                         <div class="col-md-10">
                             @if ($review->image_path)
                                 <img class="mw-100" src="{{ asset('storage/image/' . $review->image_path) }}">
@@ -76,7 +76,8 @@
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $review->id }}">
                             {{ csrf_field() }}
-                            <input type="submit" class="btn btn-primary" value="戻る">
+                            <a class="btn btn-primary" href="javascript:history.back();"
+                                style="text-decoration:none;">戻る</a>
                         </div>
                     </div>
                 </form>

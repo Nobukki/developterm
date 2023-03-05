@@ -50,7 +50,7 @@ class ReviewController extends Controller
     {
         $cond_title = $request->cond_title;
         if ($cond_title != '') {
-            $posts = Review::where('title', $cond_title)->get();
+            $posts = Review::where('title','like','%'.$cond_title.'%')->get();
         } else {
             $posts = Review::all();
         }

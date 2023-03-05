@@ -73,6 +73,14 @@
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="hidden" name="id" value="{{ $review->id }}">
+                            {{ csrf_field() }}
+                            <a class="btn btn-primary" href="javascript:history.back();"
+                                style="text-decoration:none;">戻る</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

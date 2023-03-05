@@ -48,8 +48,18 @@
                             @foreach ($posts as $review)
                                 <tr>
                                     <th>{{ $review->id }}</th>
-                                    <td>{{ Str::limit($review->title, 20) }}</td>
-                                    <td>{{ Str::limit($review->content, 20) }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.review.detail', ['review' => $review]) }}"
+                                            class="link-light">
+                                            {{ Str::limit($review->title, 20) }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.review.detail', ['review' => $review]) }}"
+                                            class="link-light">
+                                            {{ Str::limit($review->content, 20) }}
+                                        </a>
+                                    </td>
                                     {{-- <td>{!! nl2br(e($review->content)) !!}</td> --}}
                                     {{-- 編集を追加 --}}
                                     <td>
