@@ -7,11 +7,11 @@
             <h2>投稿のレビュー一覧</h2>
         </div>
         <div class="row">
-            <div class="col-6">
-                <a href="{{ route('admin.review.create') }}" role="button" class="btn btn-primary">新規投稿</a>
+            <div class="h4 col-6">
+                <a href="{{ route('admin.review.create') }}">新規投稿</a>
             </div>
-            <div class="col-6 text-right">
-                <a href="{{ route('admin.review.favoriteIndex') }}" role="button" class="btn btn-primary">お気に入り一覧</a>
+            <div class="h4 col-6 text-right">
+                <a href="{{ route('admin.review.favoriteIndex') }}" class="primary">お気に入り一覧</a>
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                                 <th width="30%">感想</th>
                                 <th>編集</th>
                                 <th>お気に入り</th>
-                                <th>削除</th>
+                                {{-- <th>削除</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -80,11 +80,11 @@
                                             @endif
                                         </a>
                                     </td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="javascript:void(0);"
+                                    {{-- <td>
+                                        <a class="btn btn-danger btn-sm" href="javascript:void(0);"
                                             onclick="var ok=confirm('本当に削除しますか');
                                         if (ok) location.href='{{ route('admin.review.delete', ['review' => $review]) }}'; return false;">削除</a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

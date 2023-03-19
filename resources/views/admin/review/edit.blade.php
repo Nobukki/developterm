@@ -73,6 +73,11 @@
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
+                    <td>
+                        <a class="btn btn-danger btn" href="javascript:void(0);"
+                            onclick="var ok=confirm('本当に削除しますか');
+                        if (ok) location.href='{{ route('admin.review.delete', ['review' => $review]) }}'; return false;">削除</a>
+                    </td>
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $review->id }}">
