@@ -60,7 +60,6 @@
                                             {{ Str::limit($review->content, 20) }}
                                         </a>
                                     </td>
-                                    {{-- <td>{!! nl2br(e($review->content)) !!}</td> --}}
                                     {{-- 編集を追加 --}}
                                     <td>
                                         <div>
@@ -80,11 +79,6 @@
                                             @endif
                                         </a>
                                     </td>
-                                    {{-- <td>
-                                        <a class="btn btn-danger btn-sm" href="javascript:void(0);"
-                                            onclick="var ok=confirm('本当に削除しますか');
-                                        if (ok) location.href='{{ route('admin.review.delete', ['review' => $review]) }}'; return false;">削除</a>
-                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
